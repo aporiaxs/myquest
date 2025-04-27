@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Academic Quest Explorer</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand&family=Playfair+Display&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background-color: #CAF0F8;
+      color: #03045E;
+    }
+
+    header {
+      background-color: #03045E;
+      color: white;
+      padding: 1em 2em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-title {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo-title h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 4em;
+    }
+
+    .search-bar {
+      background-color: white;
+      border-radius: 20px;
+      padding: 5px 15px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .search-bar input {
+      border: none;
+      outline: none;
+      font-size: 1em;
+      width: 250px;
+    }
+
+    .icons {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .icon-label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 0.7em;
+    }
+
+    main {
+      padding: 1em;
+    }
+
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2em;
+      margin-bottom: 3em;
+    }
+
+    .hero-text {
+      flex: 1;
+      max-width: 600px;
+      align-items: center;
+    }
+
+    .hero-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 6em;
+      font-weight: bold;
+      margin-bottom: 0.5em;
+      background: linear-gradient(45deg, #03045E, #0096C7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glow 5s infinite alternate;
+      align-items: center;
+    }
+
+    .hero-text p {
+      font-size: 1.5em;
+      margin-bottom: 1em;
+      font-style: italic;
+      color: #023E8A;
+    }
+
+    .info-sections {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1em;
+      justify-content: center;
+      margin-top: 1em;
+    }
+
+    .info-box {
+      background: linear-gradient(145deg, #ADE8F4, #90E0EF);
+      padding: 1em;
+      border-radius: 30px;
+      width: 450px;
+      height: 550px;
+      margin-top: 50px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .info-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2em;
+      margin-bottom: 1em;
+      color: #03045E;
+    }
+
+    .info-box ul {
+      list-style-type: disc;
+      padding-left: 1em;
+      color: #023E8A;
+    }
+
+    .info-box li {
+      margin-bottom: 0.5em;
+      font-size: 1.5em;
+    }
+
+    .insight-section {
+        background: linear-gradient(145deg, #ccf6ff, #20b7d5);
+        padding: 3em 5em; 
+        margin: 1em auto;
+        border-radius: 30px;
+        max-width: 1600px; 
+        width: 95%;
+        box-shadow: 0 20px 35px rgba(0,0,0,0.1);
+        font-family: 'Quicksand', sans-serif;
+    }
+
+    .insight-title {      
+      font-size: 2.8em;
+      text-align: center;
+      color: #03045E;
+      margin-bottom: 0.2em;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .insight-subtitle {
+      text-align: center;
+      color: #0077B6;
+      font-size: 1.2em;
+      margin-bottom: 2em;
+    }
+
+    .input-group {
+      margin-bottom: 1em;
+    }
+
+    .input-group label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 0.5em;
+      font-size: 1.1em;
+      color: #023E8A;
+    }
+    
+    .insight-form label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 0.5em;
+      font-size: 1.1em;
+      color: #023E8A;
+    }
+
+    .insight-form .input-group {
+      margin-bottom: 2em;
+    }
+    
+    .insight-form textarea {
+      width: 100%;
+      padding: 1em;
+      border-radius: 15px;
+      border: 2px dashed #90E0EF;
+      background-color: #ffffff;
+      resize: vertical;
+      font-size: 1em;
+      font-family: 'Quicksand', sans-serif;
+      transition: border 0.3s, box-shadow 0.3s;
+    }
+
+    .insight-form textarea:focus {
+      border: 2px solid #0077B6;
+      box-shadow: 0 0 10px rgba(0, 119, 182, 0.3);
+      outline: none;
+    }
+
+    .submit-btn {
+      display: block;
+      background-color: #03045E;
+      color: white;
+      padding: 12px 30px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      margin: auto;
+      font-family: 'Quicksand', sans-serif;
+      transition: transform 0.2s ease, background-color 0.3s;
+    }
+    
+    .submit-btn:hover {
+      background-color: #0077B6;
+      transform: scale(1.05);
+    }
+
+    .wisdom-wrapper {
+      display: flex;
+      align-items: flex-start;
+      justify-content: right;
+      gap: 1em;
+      margin: 2em auto;
+      padding: 1em;
+      flex-wrap: wrap;
+      max-width: 1200px;
+    }
+
+    footer {
+      margin-top: 4em;
+      text-align: center;
+      padding: 1em;
+      background-color: #023E8A;
+      color: white;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-title">
+    <h1>MY ACADEMIC QUEST EXPLORER</h1>
+  </div>
+
+  <div class="search-bar">
+    <input type="text" placeholder="Search..." />
+    🔍
+  </div>
+
+  <div class="icons">
+    <div class="icon-label">⚙️<span>Settings</span></div>
+    <div class="icon-label">❓<span>Help Center</span></div>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h2>Unlock Your Academic Potential</h2>
+      <p>Adventure Awaits: Your Academic Journey Starts Here. Our platform shares effective study techniques and resources, along with fun games to make learning interactive and engaging.</p>
+    </div>
+
+        <div class="info-sections">
+          <div class="info-box">
+            <h3>Things We Offer</h3>
+            <ul>
+              <li>Fun Learning Games</li>
+              <li>Connect with Friends</li>
+              <li>Study Group Platform</li>
+              <li>Save & Review Later</li>
+              <li>Learn Anytime, Anywhere</li>
+              <li>Leaderboards & Achievements</li>
+              <li>Career Exploration Tools</li>
+              <li>Daily Motivation Quotes</li>
+            </ul>
+          </div>
+      
+          <div class="info-box">
+            <h3>About Us</h3>
+            <ul>
+              <li>Empowering high school students</li>
+              <li>Sharing study resources & techniques</li>
+              <li>Fun and engaging learning</li>
+              <li>Community & collaboration</li>
+              <li>Enjoyable learning experience</li>
+              <li>Built by students, for students</li>
+              <li>Blending education with technology</li>
+              <li>Safe space to explore and grow</li>
+            </ul>
+          </div>
+        </div>      
+    <section class="insight-section">
+        <h2 class="insight-title">🧠 Share Your Wisdom, Explorer!</h2>
+        <p class="insight-subtitle">Every adventurer has a secret strategy. What’s yours?✨</p>
+        <form class="insight-form">
+          <div class="input-group">
+            <label for="study-technique">📘 What's your study technique?</label>
+            <textarea id="study-technique" name="study-technique" rows="4" placeholder="Spaced repetition? Flashcards? Tell us your magic!"></textarea>
+          </div>
+      
+          <div class="input-group">
+            <label for="experience">🌟 Share your learning adventure!</label>
+            <textarea id="experience" name="experience" rows="4" placeholder="When did you feel like a study hero? Or a comeback story? Let’s hear it!"></textarea>
+          </div>
+      
+          <button type="submit" onclick="explore(event)" class="submit-btn">🚀 Launch Insight</button>
+        </form>
+      </section>
+</main>
+
+<script>
+    function explore(event) {
+      event.preventDefault(); 
+      window.location.href = "techniques.html"; 
+    }
+    </script>
+    
+
+<footer>
+  &copy; 2025 My Academic Quest Explorer. All rights reserved.
+</footer>
+
+</body>
+</html>
